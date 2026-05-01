@@ -1,38 +1,17 @@
 import { db } from "./firebase.js";
 import { doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
-
-const SESSION_KEY = "rfn_accountability_session";
+import { requireAuth, applyRoleBasedNavigation, logout } from "./permissions.js";
 
 const welcomeTitle = document.getElementById("welcomeTitle");
 const roleLine = document.getElementById("roleLine");
 const strikeCount = document.getElementById("strikeCount");
 const logoutBtn = document.getElementById("logoutBtn");
-const adminLink = document.querySelector("[data-admin-link]");
-
-function getSession() {
-  const raw = localStorage.getItem(SESSION_KEY);
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
-function requireAuth() {
-  const session = getSession();
-  if (!session) {
-    window.location.href = "index.html";
-    return null;
-  }
-  return session;
-}
 
 async function loadUserData(session) {
   const userRef = doc(db, "users", session.employeeId);
   const snap = await getDoc(userRef);
   if (!snap.exists()) {
-    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem("rfn_accountability_session");
     window.location.href = "index.html";
     return;
   }
@@ -43,36 +22,24 @@ async function loadUserData(session) {
   roleLine.textContent = `${user.role || "Staff"} | Employee ID: ${session.employeeId}`;
   strikeCount.textContent = user.strikes || 0;
 
-  if ((user.role || "").toLowerCase() !== "ceo") {
-    adminLink?.classList.add("hidden");
-  }
+  applyRoleBasedNavigation(session);
 }
 
 async function loadAnnouncements() {
   const container = document.getElementById("announcementList");
-  try {
-    const snap = await getDocs(collection(db, "announcements"));
-    if (snap.empty) {
-      container.innerHTML = '<div class="empty-state">No announcements posted.</div>';
-      return;
-    }
+  const snap = await getDocs(collection(db, "announcements"));
 
-    container.innerHTML = "";
-    snap.forEach(docSnap => {
-      const data = docSnap.data();
-      const div = document.createElement("div");
-      div.className = "list-item";
-      div.innerHTML = `<strong>${data.title || "Announcement"}</strong><p>${data.body || ""}</p>`;
-      container.appendChild(div);
-    });
-  } catch (e) {
-    container.innerHTML = '<div class="empty-state">Failed to load announcements.</div>';
-  }
-}
+  container.innerHTML = snap.empty
+    ? '<div class="empty-state">No announcements posted.</div>'
+    : "";
 
-function handleLogout() {
-  localStorage.removeItem(SESSION_KEY);
-  window.location.href = "index.html";
+  snap.forEach(docSnap => {
+    const data = docSnap.data();
+    const div = document.createElement("div");
+    div.className = "list-item";
+    div.innerHTML = `<strong>${data.title}</strong><p>${data.body}</p>`;
+    container.appendChild(div);
+  });
 }
 
 async function init() {
@@ -83,5 +50,5 @@ async function init() {
   await loadAnnouncements();
 }
 
-logoutBtn?.addEventListener("click", handleLogout);
+logoutBtn?.addEventListener("click", logout);
 init();
