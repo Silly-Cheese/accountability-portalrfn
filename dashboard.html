@@ -10,70 +10,24 @@
   <aside class="sidebar">
     <div class="sidebar-brand">
       <div class="brand-mark small">RFN</div>
-      <div>
-        <strong>Accountability</strong>
-        <span>Staff Portal</span>
-      </div>
+      <div><strong>Accountability</strong><span>Staff Portal</span></div>
     </div>
     <nav class="sidebar-nav">
       <a class="active" href="dashboard.html">Dashboard</a>
       <a href="training.html">Training</a>
       <a href="reviews.html">Performance Reviews</a>
       <a href="profile.html">Profile & Strikes</a>
-      <a href="admin.html" data-admin-link>Admin Center</a>
+      <a href="analytics.html" data-min-role="management">Analytics</a>
+      <a href="admin.html" data-min-role="ownership">Admin Center</a>
       <button id="logoutBtn">Logout</button>
     </nav>
   </aside>
 
   <main class="portal-main">
-    <header class="portal-header">
-      <div>
-        <p class="eyebrow">RFN Staff Command Center</p>
-        <h1 id="welcomeTitle">Welcome</h1>
-        <p class="muted" id="roleLine">Loading account details...</p>
-      </div>
-      <div class="status-pill">System Active</div>
-    </header>
-
-    <section class="grid-cards">
-      <article class="metric-card">
-        <span>Training Due</span>
-        <strong id="trainingDueCount">0</strong>
-        <p>Assigned modules requiring completion.</p>
-      </article>
-      <article class="metric-card">
-        <span>Reviews Due</span>
-        <strong id="reviewsDueCount">0</strong>
-        <p>Performance reviews awaiting submission.</p>
-      </article>
-      <article class="metric-card warning-card">
-        <span>Strikes</span>
-        <strong id="strikeCount">0</strong>
-        <p>Permanent accountability strikes on record.</p>
-      </article>
-      <article class="metric-card">
-        <span>Activity Check</span>
-        <strong id="activityStatus">Open</strong>
-        <p>Confirm your current activity status.</p>
-      </article>
-    </section>
-
-    <section class="content-grid">
-      <div class="panel">
-        <h2>Current Requirements</h2>
-        <div id="requirementList" class="stack-list">
-          <div class="empty-state">Loading requirements...</div>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Announcements</h2>
-        <div id="announcementList" class="stack-list">
-          <div class="empty-state">No announcements loaded yet.</div>
-        </div>
-      </div>
-    </section>
+    <header class="portal-header"><div><p class="eyebrow">RFN Staff Command Center</p><h1 id="welcomeTitle">Welcome</h1><p class="muted" id="roleLine">Loading account details...</p></div><div class="status-pill">System Active</div></header>
+    <section class="grid-cards"><article class="metric-card"><span>Training Due</span><strong id="trainingDueCount">0</strong><p>Assigned modules requiring completion.</p></article><article class="metric-card"><span>Reviews Due</span><strong id="reviewsDueCount">0</strong><p>Performance reviews awaiting submission.</p></article><article class="metric-card warning-card"><span>Strikes</span><strong id="strikeCount">0</strong><p>Permanent accountability strikes on record.</p></article><article class="metric-card"><span>Activity Check</span><strong id="activityStatus">Open</strong><p>Confirm your current activity status.</p></article></section>
+    <section class="content-grid"><div class="panel"><h2>Current Requirements</h2><div id="requirementList" class="stack-list"><div class="empty-state">Loading requirements...</div></div></div><div class="panel"><h2>Announcements</h2><div id="announcementList" class="stack-list"><div class="empty-state">No announcements loaded yet.</div></div></div></section>
   </main>
-
   <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
