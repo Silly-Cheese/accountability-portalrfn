@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFN Accountability Portal | Training</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="portal-body">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="brand-mark small">RFN</div><div><strong>Accountability</strong><span>Staff Portal</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a class="active" href="training.html">Training</a>
+      <a href="reviews.html">Performance Reviews</a>
+      <a href="profile.html">Profile & Strikes</a>
+      <a href="admin.html">Admin Center</a>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-header">
+      <div>
+        <p class="eyebrow">Monthly Requirements</p>
+        <h1>Training Modules</h1>
+        <p class="muted">Complete assigned readings, interactive sections, and quizzes before the deadline.</p>
+      </div>
+      <button class="primary-btn compact" id="seedTrainingBtn">Create Starter Module</button>
+    </header>
+
+    <section class="panel">
+      <h2>Assigned Training</h2>
+      <div id="trainingList" class="stack-list"><div class="empty-state">Loading training modules...</div></div>
+    </section>
+
+    <section class="panel hidden" id="modulePlayer">
+      <div class="module-topline">
+        <div>
+          <p class="eyebrow" id="moduleStatus">Interactive Module</p>
+          <h2 id="moduleTitle">Module</h2>
+        </div>
+        <div class="progress-shell"><div id="moduleProgress" class="progress-bar"></div></div>
+      </div>
+      <article id="moduleContent" class="reading-box"></article>
+      <div id="quizBox" class="quiz-box"></div>
+      <div class="action-row">
+        <button class="secondary-btn" id="prevSectionBtn">Previous</button>
+        <button class="primary-btn compact" id="nextSectionBtn">Next</button>
+        <button class="primary-btn compact hidden" id="submitQuizBtn">Submit Quiz</button>
+      </div>
+      <p id="trainingMessage" class="form-message"></p>
+    </section>
+  </main>
+
+  <script type="module" src="assets/js/training.js"></script>
+</body>
+</html>
