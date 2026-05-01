@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFN Accountability Portal</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="login-body">
+  <main class="login-shell">
+    <section class="login-card">
+      <div class="brand-mark">RFN</div>
+      <p class="eyebrow">Authorized Staff Access</p>
+      <h1>RFN Accountability Portal</h1>
+      <p class="login-subtitle">Training, performance reviews, activity checks, write-ups, strikes, and staff accountability.</p>
+
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="employeeId">Employee ID</label>
+          <input id="employeeId" type="text" placeholder="Example: RFN-0001" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="primary-btn" id="loginButton">Sign In</button>
+        <p class="form-message" id="loginMessage"></p>
+      </form>
+      <div class="login-notice">Restricted to authorized RFN staff only. All sign-ins and portal actions may be logged.</div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop hidden" id="suspensionModal">
+    <div class="modal danger-modal">
+      <h2>Account Suspended</h2>
+      <p>Your RFN Accountability Portal access has been restricted.</p>
+      <div class="modal-detail"><strong>Reason:</strong><span id="suspensionReason">Not provided.</span></div>
+      <div class="modal-detail"><strong>Issued By:</strong><span id="suspensionBy">RFN Administration</span></div>
+      <div class="modal-detail"><strong>Date:</strong><span id="suspensionDate">Unknown</span></div>
+      <button class="secondary-btn" id="closeSuspensionModal">Close</button>
+    </div>
+  </div>
+
+  <script type="module" src="assets/js/firebase.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>
