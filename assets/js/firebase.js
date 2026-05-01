@@ -15,15 +15,14 @@ const db = getFirestore(app);
 
 export { db };
 
-// AUTO INITIALIZATION SYSTEM
 export async function ensureCoreCollections() {
   const defaults = [
-    { col: "systemSettings", id: "core", data: { initialized: true } },
-    { col: "users", id: "RFN-0001", data: {
-        employeeId: "RFN-0001",
+    { col: "systemSettings", id: "core", data: { initialized: true, portalName: "RFN Accountability Portal" } },
+    { col: "users", id: "341479", data: {
+        employeeId: "341479",
         username: "Executive_Eagle",
         role: "CEO",
-        password: "changeme",
+        password: "change-this-password",
         mustResetPassword: true,
         strikes: 0,
         active: true,
@@ -35,8 +34,6 @@ export async function ensureCoreCollections() {
   for (const item of defaults) {
     const ref = doc(db, item.col, item.id);
     const snap = await getDoc(ref);
-    if (!snap.exists()) {
-      await setDoc(ref, item.data);
-    }
+    if (!snap.exists()) await setDoc(ref, item.data);
   }
 }
