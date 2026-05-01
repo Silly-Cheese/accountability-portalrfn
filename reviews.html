@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFN Accountability Portal | Performance Reviews</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="portal-body">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="brand-mark small">RFN</div><div><strong>Accountability</strong><span>Staff Portal</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="training.html">Training</a>
+      <a class="active" href="reviews.html">Performance Reviews</a>
+      <a href="profile.html">Profile & Strikes</a>
+      <a href="admin.html">Admin Center</a>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-header">
+      <div>
+        <p class="eyebrow">Monthly Accountability</p>
+        <h1>Performance Reviews</h1>
+        <p class="muted">Submit required self-reviews and management reviews before the assigned deadline.</p>
+      </div>
+      <button class="primary-btn compact" id="seedReviewBtn">Create Starter Review</button>
+    </header>
+
+    <section class="content-grid">
+      <div class="panel">
+        <h2>Available Review Forms</h2>
+        <div id="reviewTemplateList" class="stack-list"><div class="empty-state">Loading review forms...</div></div>
+      </div>
+
+      <div class="panel">
+        <h2>Submission History</h2>
+        <div id="reviewHistory" class="stack-list"><div class="empty-state">Loading submissions...</div></div>
+      </div>
+    </section>
+
+    <section class="panel hidden" id="reviewFormPanel">
+      <p class="eyebrow" id="reviewFormType">Performance Review</p>
+      <h2 id="reviewFormTitle">Review Form</h2>
+      <p class="muted" id="reviewFormDescription"></p>
+
+      <form id="performanceReviewForm" class="builder-form">
+        <div class="form-group">
+          <label for="targetUserId">Target Employee ID</label>
+          <input id="targetUserId" type="text" placeholder="Example: RFN-0001" required />
+        </div>
+        <div id="dynamicReviewQuestions" class="stack-list"></div>
+        <button class="primary-btn compact" type="submit">Submit Review</button>
+        <p id="reviewMessage" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="assets/js/reviews.js"></script>
+</body>
+</html>
