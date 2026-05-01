@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RFN Analytics Dashboard</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="portal-body">
+<aside class="sidebar">
+<nav class="sidebar-nav">
+<a href="dashboard.html">Dashboard</a>
+<a href="training.html">Training</a>
+<a href="reviews.html">Reviews</a>
+<a href="profile.html">Profile</a>
+<a class="active" href="analytics.html">Analytics</a>
+<button id="logoutBtn">Logout</button>
+</nav>
+</aside>
+<main class="portal-main">
+<header><h1>Analytics Dashboard</h1></header>
+<section class="grid-cards">
+<div class="metric-card"><span>Total Staff</span><strong id="totalStaff">0</strong></div>
+<div class="metric-card"><span>Completed Training</span><strong id="trainingComplete">0</strong></div>
+<div class="metric-card"><span>Reviews Submitted</span><strong id="reviewsCount">0</strong></div>
+<div class="metric-card warning-card"><span>Total Strikes</span><strong id="strikeTotal">0</strong></div>
+</section>
+</main>
+<script type="module" src="assets/js/analytics.js"></script>
+</body>
+</html>
