@@ -79,6 +79,40 @@ async function reactivateUser(e) {
   document.getElementById("reactivateMsg").textContent = "Account reactivated.";
 }
 
+async function runEnforcement() {
+  const container = document.getElementById("enforcementList");
+  const snap = await getDocs(collection(db, "users"));
+  container.innerHTML = "";
+
+  snap.forEach(docSnap => {
+    const data = docSnap.data();
+    let status = "";
+    if (data.strikes >= 6) status = "TERMINATION REVIEW";
+    else if (data.strikes >= 3) status = "DEMOTION REVIEW";
+
+    if (status) {
+      const div = document.createElement("div");
+      div.className = "list-item";
+      div.innerHTML = `<strong>${data.employeeId}</strong><p>${status}</p>`;
+      container.appendChild(div);
+    }
+  });
+}
+
+async function loadAuditLogs() {
+  const container = document.getElementById("auditList");
+  const snap = await getDocs(collection(db, "auditLogs"));
+  container.innerHTML = "";
+
+  snap.forEach(docSnap => {
+    const data = docSnap.data();
+    const div = document.createElement("div");
+    div.className = "list-item";
+    div.innerHTML = `<strong>${data.action}</strong><p>${data.actorId || "System"}</p>`;
+    container.appendChild(div);
+  });
+}
+
 async function loadStaff() {
   const container = document.getElementById("staffList");
   const snap = await getDocs(collection(db, "users"));
@@ -103,7 +137,10 @@ document.getElementById("createUserForm").addEventListener("submit", createUser)
 document.getElementById("strikeForm").addEventListener("submit", issueStrike);
 document.getElementById("suspendForm").addEventListener("submit", suspendUser);
 document.getElementById("reactivateForm").addEventListener("submit", reactivateUser);
+document.getElementById("runEnforcementBtn").onclick = runEnforcement;
+document.getElementById("refreshAuditBtn").onclick = loadAuditLogs;
 document.getElementById("logoutBtn").onclick = logout;
 
 requireCEO();
 loadStaff();
+loadAuditLogs();
