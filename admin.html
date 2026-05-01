@@ -74,6 +74,21 @@
       </div>
     </section>
 
+    <section class="content-grid">
+      <div class="panel">
+        <h2>Enforcement Review</h2>
+        <p class="muted">Automatically flags staff at 3 strikes for demotion review and 6 strikes for termination review.</p>
+        <button class="primary-btn compact" id="runEnforcementBtn">Run Enforcement Review</button>
+        <p id="enforcementMsg" class="form-message"></p>
+        <div id="enforcementList" class="stack-list"><div class="empty-state">No enforcement review has been run this session.</div></div>
+      </div>
+      <div class="panel">
+        <h2>Audit Logs</h2>
+        <button class="primary-btn compact" id="refreshAuditBtn">Refresh Audit Logs</button>
+        <div id="auditList" class="stack-list"><div class="empty-state">Loading audit logs...</div></div>
+      </div>
+    </section>
+
     <section class="panel">
       <h2>Staff Accounts</h2>
       <div id="staffList" class="stack-list"><div class="empty-state">Loading staff accounts...</div></div>
