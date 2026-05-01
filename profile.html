@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFN Accountability Portal | Profile</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="portal-body">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="brand-mark small">RFN</div><div><strong>Accountability</strong><span>Staff Portal</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="training.html">Training</a>
+      <a href="reviews.html">Performance Reviews</a>
+      <a class="active" href="profile.html">Profile & Strikes</a>
+      <a href="admin.html">Admin Center</a>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </aside>
+
+  <main class="portal-main">
+    <header class="portal-header">
+      <div>
+        <p class="eyebrow">Staff Record</p>
+        <h1 id="profileName">Profile</h1>
+        <p class="muted" id="profileMeta">Loading staff record...</p>
+      </div>
+      <div class="status-pill" id="accountStatus">Active</div>
+    </header>
+
+    <section class="grid-cards">
+      <article class="metric-card"><span>Current Role</span><strong id="profileRole">—</strong><p>Your assigned RFN role.</p></article>
+      <article class="metric-card warning-card"><span>Permanent Strikes</span><strong id="profileStrikes">0</strong><p>3 strikes may trigger demotion. 6 may trigger termination.</p></article>
+      <article class="metric-card"><span>Training Status</span><strong id="profileTraining">Tracked</strong><p>Training completions are stored in Firestore.</p></article>
+      <article class="metric-card"><span>Review Status</span><strong id="profileReviews">Tracked</strong><p>Performance reviews are stored in Firestore.</p></article>
+    </section>
+
+    <section class="content-grid">
+      <div class="panel">
+        <h2>Strike History</h2>
+        <div id="strikeHistory" class="stack-list"><div class="empty-state">Loading strike history...</div></div>
+      </div>
+      <div class="panel">
+        <h2>Account Actions</h2>
+        <div id="actionHistory" class="stack-list"><div class="empty-state">Loading account actions...</div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="passwordResetPanel">
+      <h2>Password Reset</h2>
+      <p class="muted">Use this if you were issued a temporary password or need to update your account password.</p>
+      <form id="passwordResetForm" class="builder-form">
+        <div class="form-group"><label for="newPassword">New Password</label><input id="newPassword" type="password" required minlength="4" /></div>
+        <button class="primary-btn compact" type="submit">Update Password</button>
+        <p id="passwordMessage" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="assets/js/profile.js"></script>
+</body>
+</html>
